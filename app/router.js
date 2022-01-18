@@ -12,4 +12,6 @@ Router.map(function () {
   this.route('rental', { path: '/rentals/:rental_id' });
   this.route('upload');
   this.route('plot');
+
+  this.route('dataset');
 });

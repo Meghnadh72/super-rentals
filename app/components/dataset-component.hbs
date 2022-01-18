@@ -1,0 +1,109 @@
+<div class="row">
+        <div class="col-md-6">
+            <form enctype="multipart/form-data" id="plotForm"> 
+                <b><h4 class="col-md-4" style="color: black">  Plot Graph </h4></b>
+                        <div class="col-md-3 form-control">
+                            <label>Choose Dataset</label>
+
+                                
+                                <select {{ on 'change' (fn this.getDatasetColumns "datasetNamef")}} class="form-control" id="datasetNamef" name="dataSetPlot">
+                                <option selected disabled="true"> Select Dataset </option>
+                                    {{#each  @datasetFormValues  as |dataset| }}
+                                <option value={{ dataset }}> {{ dataset }} </option>
+                                    {{/each}}
+                                </select>
+                        </div>
+                        <div class="col-md-3 form-control" >
+                                            <label> Column1</label>
+                                            {{!-- <input type="text" name="column1Plot" class="form-control" id="column1PlotID"> --}}
+                                            <select class="form-control" id="column1PlotID" >
+                                            <option selected disabled="true"> Select Column </option>
+                                                {{#each  this.columnsList  as |column| }}
+                                            <option value={{ column }}> {{ column }} </option>
+                                                {{/each}}
+                                            </select>
+                                            
+                        </div>
+
+                                        
+                        <div class="col-md-3 form-control">
+                            <label> Column2 </label>
+                            <select class="form-control" id="column2PlotID" >
+                                            <option selected disabled="true"> Select Column </option>
+                                                {{#each  this.columnsList  as |column| }}
+                                            <option value={{ column }}> {{ column }} </option>
+                                                {{/each}}
+                                            </select>
+                        </div>
+
+                        
+                        <div style="opacity: 90%"  class="col-md-4 form-control">
+                                <button {{ on 'click' this.plotGraph}} class="btn btn-primary " type="button" id="plotButton"> Plot</button>
+                        </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <form enctype="multipart/form-data" id="computeForm"> 
+                <b><h4 class="col-md-4" style="color: black">   Compute </h4></b>
+                        <div class="col-md-3 form-control">
+                            <label>Choose Dataset</label>
+
+                                
+                                <select {{ on 'change' (fn this.getDatasetColumns "datasetNamec")}} class="form-control" id="datasetNamec" name="dataSetPlot">
+                                <option selected disabled="true"> Select Dataset </option>
+                                    {{#each  @datasetFormValues  as |dataset| }}
+                                <option value={{ dataset }}> {{ dataset }} </option>
+                                    {{/each}}
+                                </select>
+                        </div>
+                        
+
+                                        
+                        <div class="col-md-3 form-control">
+                            <label> Column </label>
+                            <select class="form-control" id="column1ComputeID" >
+                                            <option selected disabled="true"> Select Column </option>
+                                                {{#each  this.columnsList  as |column| }}
+                                            <option value={{ column }}> {{ column }} </option>
+                                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 form-control">
+                            <label> Min Or Max </label>
+                            <select class="form-control" id="operation" >
+                                            <option value="0" selected > Min </option>
+                                            <option value="1"> Max </option>
+                            </select>
+                        </div>
+
+                        <div style="opacity: 90%"  class="col-md-4 form-control">
+                                <button {{ on 'click' this.compute}} class="btn btn-primary " type="button" id="buttonCompute">Compute</button>
+                        </div>
+
+                        <div style="opacity: 90%"  class="col-md-4 form-control">
+                                <p> Computed Value: {{this.computedValue}} </p>
+                        </div>
+            </form>
+        </div>
+
+        
+    </div>
+
+    <div class="row">
+    <div  class="col-md-6 text-center" id="graph1" style="width:800px;height:600px;"></div>
+     </div>
+
+
+
+
+{{!-- <script>
+    graph1 = documentgetElementById('graph1');
+    xAxisData = {{this.xAxis}};
+    yAxisData = {{this.yAxis}};
+    Plotly.newPlot( graph1, [{
+	x: xAxisData,
+	y: yAxisData }], {
+	margin: { t: 0 } } );
+</script> --}}

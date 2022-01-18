@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-6">
+                    <form id="uploadForm" method="POST" enctype="multipart/form-data" style="opacity: 100%">
+                        
+
+                    <!  Upload file Option -->
+                    <div class="form-group form-control">
+                        <label class = "info"  for="file1"> Upload a file</label>
+                        <input class="form-control"  type="file" id="file1" name="file">
+                        <small>Only accepts CSV files</small>
+                    </div>
+
+                    <! Dataset Name Field -->
+                        <div class="form-group form-control">
+                            <label>File/Dataset Name</label>
+                            <input class="form-control" type="text" id="datasetName">
+                        </div>
+
+                    <! Submit Button -->
+                        <button  class="btn btn-primary form-control" type="button" {{on 'click' this.submitForm }} id="uploadButton" >Upload</button>
+
+                    </form>
+    </div>
+    <div class="col-md-6">
+       
+        <ul class="results">
+            <li><h3> List of Datasets uploaded</h3></li>
+                {{#each  this.datasetLists  as |dataset|}}
+                <li>{{dataset}}</li>
+                {{/each}}
+        </ul>
+
+     <span class="float-right">
+            <button type="button" class="btn btn-primary " {{ on 'click' this.refresh}} id="refreshButton">Click here to get uploaded datasets</button>
+        </span>
+   
+    </div>
+   
+    </div>

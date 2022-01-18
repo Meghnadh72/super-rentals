@@ -29,7 +29,7 @@
     "@glimmer/tracking": "^1.0.4",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^1.11.3",
+    "ember-auto-import": "^1.12.0",
     "ember-cli": "~3.28.4",
     "ember-cli-app-version": "^5.0.0",
     "ember-cli-babel": "^7.26.6",
@@ -66,5 +66,9 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "plotly.js-dist": "^2.8.3"
   }
 }
