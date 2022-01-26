@@ -10,6 +10,7 @@ module.exports = function (environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
+        EMBER_NATIVE_DECORATOR_SUPPORT: true
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
@@ -49,5 +50,7 @@ module.exports = function (environment) {
 
   ENV.MAPBOX_ACCESS_TOKEN =
     'pk.eyJ1IjoibWVnaG5hZGg3MiIsImEiOiJja3g1dzg0ZWUxYjNvMm9vMXJkMWpsd2p5In0.VR5PbwLxvAtDQ2Jt7O7W9Q';
+  ENV.FLASK_FETCHURL = 'http://172.17.0.4:1234/';
+  //ENV.FLASK_FETCHURL = 'http://192.168.0.8:1234/';
   return ENV;
 };

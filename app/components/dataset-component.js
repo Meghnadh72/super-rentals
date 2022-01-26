@@ -3,7 +3,9 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import 'plotly.js-dist';
 import { doc } from 'prettier';
+import ENV from 'super-rentals/config/environment';
 
+const fetch_url = ENV.FLASK_FETCHURL;
 export default class DatasetComponentComponent extends Component {
 
     @tracked xAxis;
@@ -23,11 +25,7 @@ export default class DatasetComponentComponent extends Component {
         let minOrmax    = document.getElementById("operation").value;
         let column      = document.getElementById("column1ComputeID").value;
         let datasetName = document.getElementById("datasetNamec").value;
-        let computeUrl  = "http://127.0.0.1:5000/compute?" +
-                         + "datasetName=" +datasetName 
-                         + "&value="+minOrmax 
-                         + "&column=" + column;
-        debugger;
+        let computeUrl  = fetch_url+ "compute?" + "datasetName=" +datasetName + "&value="+minOrmax + "&column=" + column;
 
         try{
             let resp           = await fetch(computeUrl);
@@ -48,8 +46,8 @@ export default class DatasetComponentComponent extends Component {
     @action
     async getDatasetColumns(datasetId) {
         let datasetName       = document.getElementById(datasetId).value;
-        let requrlCol         = "http://127.0.0.1:5000/getHeadersList?datasetName="+datasetName;
-        debugger;
+        let requrlCol         = fetch_url + "getHeadersList?datasetName="+datasetName;
+        
         try {
             let response      = await fetch(requrlCol);
             let {headersList} = await response.json();
@@ -70,12 +68,10 @@ export default class DatasetComponentComponent extends Component {
     async plotGraph(){
         let datasetName = document.getElementById("datasetNamef").value;
         let col1        = document.getElementById("column1PlotID").value;
-        debugger;
         let col2        = document.getElementById("column2PlotID").value;
-        let requrl      = "http://127.0.0.1:5000/plotGraph?" + 
-                          "firstCol=" + col1 + 
-                          "&dsName=" + datasetName + 
-                          "&secondCol=" + col2;
+
+        //Form the request URL from three values above as request Parameters
+        let requrl      = fetch_url + "plotGraph?firstCol=" + col1 +  "&dsName=" + datasetName + "&secondCol=" + col2;
         
         let layout = {
             title: 'Scroll and Zoom',
